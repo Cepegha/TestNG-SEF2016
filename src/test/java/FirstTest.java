@@ -13,24 +13,24 @@ public class FirstTest {
 
     @Test
     public void seleniumTest() {
-        //создание браузера
+        //СЃРѕР·РґР°РЅРёРµ Р±СЂР°СѓР·РµСЂР°
         System.setProperty("webdriver.chrome.driver", System.getProperty("C:\\seleniumdriver") + "\\chromedriver.exe" );
         WebDriver driver = new ChromeDriver();
-        //на всю страницу
+        //РЅР° РІСЃСЋ СЃС‚СЂР°РЅРёС†Сѓ
         driver.manage().window().maximize();
-        //ожидание загрузки страницы
+        //РѕР¶РёРґР°РЅРёРµ Р·Р°РіСЂСѓР·РєРё СЃС‚СЂР°РЅРёС†С‹
         ////driver.manage().window()
-        //переходим на страницу
+        //РїРµСЂРµС…РѕРґРёРј РЅР° СЃС‚СЂР°РЅРёС†Сѓ
         driver.get("https://www.google.by");
-        //находим элемент ID строку поиска на странице
+        //РЅР°С…РѕРґРёРј СЌР»РµРјРµРЅС‚ ID СЃС‚СЂРѕРєСѓ РїРѕРёСЃРєР° РЅР° СЃС‚СЂР°РЅРёС†Рµ
         WebElement searchField = driver.findElement(By.id("gs_lc0"));
-        //передаем в строку
+        //РїРµСЂРµРґР°РµРј РІ СЃС‚СЂРѕРєСѓ
         searchField.sendKeys("Selenium");
-        //инициируем поиск
+        //РёРЅРёС†РёРёСЂСѓРµРј РїРѕРёСЃРє
         searchField.submit();
-        //создаем массив результатов - ссылки на странице
+        //СЃРѕР·РґР°РµРј РјР°СЃСЃРёРІ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ - СЃСЃС‹Р»РєРё РЅР° СЃС‚СЂР°РЅРёС†Рµ
         List<WebElement> searchResults = (List<WebElement>) driver.findElement(By.cssSelector(".r>a"));
-        //проходим по всем ссылкам - должны содержать текст селениум
+        //РїСЂРѕС…РѕРґРёРј РїРѕ РІСЃРµРј СЃСЃС‹Р»РєР°Рј - РґРѕР»Р¶РЅС‹ СЃРѕРґРµСЂР¶Р°С‚СЊ С‚РµРєСЃС‚ СЃРµР»РµРЅРёСѓРј
         for (WebElement searchResult : searchResults){
             assertTrue(searchResult.getText().toLowerCase().contains("selenium"));
         }
